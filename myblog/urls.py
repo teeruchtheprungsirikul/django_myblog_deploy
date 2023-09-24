@@ -19,10 +19,18 @@ from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 
+from django.conf.urls import handler404
+
 urlpatterns = [
     path('', include('blogapp.urls')),
     path('admin/', admin.site.urls),
     path('summernote/', include('django_summernote.urls')),
 ]
+
+# Page not found handling
+handler404 = "blogapp.views.page_not_found_view"
+
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    
+    handler404 = "blogapp.views.page_not_found_view"

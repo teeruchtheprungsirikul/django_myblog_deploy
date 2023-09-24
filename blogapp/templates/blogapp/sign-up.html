@@ -1,0 +1,29 @@
+{% extends 'blogapp/base.html' %}
+{% load crispy_forms_tags %}
+{% block title %} <title>Sign up</title> {% endblock %}
+
+
+{% block content %}
+<div class="container">
+    <br>
+    <div style="text-align: left;">
+        <h1>Sign up</h1><br>
+    </div>
+        <form method="POST" action="{% url 'sign_up' %}">
+            <div class="form-group">
+                <div class="form-group col-md-5">
+                    {% csrf_token %}
+                    {{ form|crispy }}
+                </div>
+            </div>
+            <div class="col-md-5">
+                <button type="submit" class="btn btn-primary w-100 d-block">Summit</button>
+                <p>Already have an account?<a href="{% url 'sign_in' %}">Sign in</a> </p>
+            </div>
+        </form>
+    </div><br>
+</div>
+{% endblock %}
+
+
+    

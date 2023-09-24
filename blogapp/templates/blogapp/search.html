@@ -1,0 +1,26 @@
+{% extends 'blogapp/base.html' %} 
+
+{% block title %} <title>Search</title> {%endblock %} 
+
+{% block content %}
+
+    <div class="container">
+        <br>
+        {% if article_count == 1 %}
+            <h2>You are searching for ... "{{ articles_search }}"</h1>
+            <p>found {{ article_count }} article</p>
+        {% elif article_count > 1 %}
+            <h2>You are searching for ... "{{ articles_search }}"</h1>
+            <p>found {{ article_count }} articles</p>
+        {% else %}
+            <h2>Sorry "{{ articles_search }}" is not found here</h1>
+        {% endif %}
+        <ul>
+            
+            {% for article in articles %}
+                <!--<li><a href="/post-details/{{ article.id }}">{{ article.title }}</a></li>-->
+                <li><a href="/post-details/{{ article.id }}">{{ article.title }}</a></li>
+            {% endfor %}
+        </ul>
+    </div>
+{% endblock %}

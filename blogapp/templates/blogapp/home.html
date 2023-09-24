@@ -1,32 +1,29 @@
 {% extends 'blogapp/base.html' %} 
 
-{% block title %} <title>Home</title> {%endblock %} 
+{% block title %} <title>Home | Teeruch Records </title> {%endblock %} 
 
 {% block content %}
 
-<div class="container" style="text-align: center">
-  <div style="text-align: center">
-    <h1>Hello, home page</h1>
-    <p>{{today}}</p>
+  <div class="container"> 
+    <br>
+    <div style="text-align: left">   
+      <h1>Welcome to Teeruch's records collection.</h1>
+      <p>Visit the website for my vinyl collection guide for music lovers and music vinyl collectors.</p>
+      <!--<p>{{today}}</p>-->
+    </div>
+    
+    <div class="row">
+      {% for post in posts %}
+        <div class="col-sm-4">
+          <div class="card-body" style="width: 22rem; margin: 14px;">
+            <img src="{{post.featured_pic.url}}" alt="{{ post.title}}" class="img-fluid"/>
+            <h4 class="card-title">Title: {{post.title}}</h4>
+            <p class="card-text">Date Created: {{post.date_created}}</p>
+            <p class="card-text">Author: {{post.author}}</p>
+            <a class="btn btn-primary" href="{{ post.get_absolute_url }}" type="button">See more</a>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
   </div>
-  <br/>
-
-  {% for post in posts %}
-
-  <div>
-    <img src="{{post.featured_pic.url}}" alt="{{ post.title}}" width="400px" height="300px"/>
-    <h4>Title: {{post.title}}</h4>
-    <p>Date Created: {{post.date_created}}</p>
-    <p>Author: {{post.author}}</p>
-  </div>
-
-  <div>
-    <a class="btn btn-primary" href="/post-details/{{post.id}}" type="button">See more</a>
-  </div>
-
-  <br /><br/>
-
-  {% endfor %}
-</div>
-
 {% endblock %}

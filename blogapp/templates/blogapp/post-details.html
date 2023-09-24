@@ -4,16 +4,18 @@
 
 
 {% block content %}
-<div class="container" style="text-align: center;">
+<div class="container" style="text-align: left;">
     <div style="text-align: center;">
-        <h1>Hello, Post details page</h1>
-        <p>{{today}}</p>
+        <!--<h1>Hello, Post details page</h1>-->
+        <h1>Teeruch Records</h1>
+        <!--<p>{{today}}</p>-->
     </div><br>
     
     {% if single_post %}
     <div>
-        <img src="{{single_post.featured_pic.url}}" alt="{{single_post.title}}" width="400px" height="300px">
         <h4>Title: {{single_post.title}}</h4>
+        <p>Author: {{single_post.author.first_name}} {{single_post.author.last_name}}</p>
+        <img src="{{single_post.featured_pic.url}}" alt="{{single_post.title}}" width="400px" height="300px">
         <p>Date Created: {{single_post.date_created}} </p>
         <p>Date Updated: {{single_post.date_updated}} </p>
         <p>{{single_post.post | safe}} </p>

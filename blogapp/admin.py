@@ -19,7 +19,11 @@ class BlogAdmin(SummernoteModelAdmin):
     
     list_display = ('title', 'date_created', 'date_updated', 'author')
     summernote_fields = '__all__'
+    prepopulated_fields = {'slug': ('title',)} 
+    
+class ContractAdmin(admin.ModelAdmin):
+    list_display = ['subject', 'email', 'sender']
     
 admin.site.register(Blog, BlogAdmin)
 admin.site.register(Author)
-admin.site.register(Contact)
+admin.site.register(Contact, ContractAdmin)
